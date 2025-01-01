@@ -101,31 +101,23 @@ function edit($data)
 
   $gender = $data["jenis_kelamin"];
 
-  if(isset($data['foto']))
-  {
+
+  if(isset($_FILES['foto'])) {
     $gambar = upload();
   }
-  else {
-    $gambar = $data["fotoLama"];
+ 
+
+ $query = "UPDATE user SET email = '$username', nama_lengkap = '$nama', jenis_kelamin = '$gender'";
+
+  if ($gambar) {
+      $query .= ", foto = '$gambar'";
   }
-
-  // $query = "UPDATE user SET email = '$username', 
-  // nama_lengkap = '$nama',
-  // no_handphone = '$no_handphone',
-  // jenis_kelamin = '$gender',
-  // foto = '$gambar'
-  // WHERE id_user = '$userid'
-  // ";
-
-  $query = "UPDATE user 
-          SET email = '$username', 
-              nama_lengkap = '$nama',
-              jenis_kelamin = '$gender',
-              foto = '$gambar'";
 
   if ($no_handphone) {
       $query .= ", no_handphone = '$no_handphone'";
   }
+
+  $query .= " WHERE id_user = '$userid'";
 
 
   mysqli_query($conn, $query);
@@ -281,7 +273,7 @@ function upload()
   }
 
   // Cek apakah gambar
-  $extensiValid = ['jpg', 'png', 'jpeg'];
+  $extensiValid = ['jpg', 'png', 'jpeg', 'webp'];
   $extensiGambar = explode('.', $namaFile);
   $extensiGambar = strtolower(end($extensiGambar));
 
@@ -302,8 +294,12 @@ function upload()
   $namaFileBaru = uniqid();
   $namaFileBaru .= '.';
   $namaFileBaru .= $extensiGambar;
-  // Move File
-  move_uploaded_file($tmpName, '../img/' . $namaFileBaru);
+  // Move File 
+
+ /**
+   * Change to dynamic path
+ */
+  move_uploaded_file($tmpName, __DIR__  . "/img/" . $namaFileBaru);
   return $namaFileBaru;
 }
 

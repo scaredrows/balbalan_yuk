@@ -117,7 +117,7 @@ if (isset($_POST["bayar"])) {
     </div>
   </header>
 
-  <?php include 'edit_profit_modal.php'?>
+  <?php include '../edit_profit_modal.php'?>
 
 
   <main class="main">
@@ -222,7 +222,7 @@ if (isset($_POST["bayar"])) {
       </div>
     </div>
 
-                  <div class="modal-dialog modal-dialog-centered">
+                  <!-- <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">                        
                       </div>
@@ -252,7 +252,7 @@ if (isset($_POST["bayar"])) {
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
   </footer>
 

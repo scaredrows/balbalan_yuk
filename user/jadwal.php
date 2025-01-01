@@ -69,7 +69,7 @@ $profil = query("SELECT * FROM user WHERE id_user = '$id_user'")[0];
     </nav>
   </div>
   <!-- End Navbar -->
-  <?php include 'edit_profit_modal.php'?>
+  <?php include '../edit_profit_modal.php'?>
 
   <section class="lapangan mb-5" id="lapangan">
     <div class="container-fluid">

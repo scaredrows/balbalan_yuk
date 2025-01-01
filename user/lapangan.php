@@ -126,7 +126,7 @@ if (isset($_POST["pesan"])) {
       <?php endif; ?>
 
 
-      <?php include 'edit_profit_modal.php'?>
+      <?php include '../edit_profit_modal.php'?>
 
     </div>
   </header>

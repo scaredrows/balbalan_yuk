@@ -98,7 +98,7 @@ if (isset($_POST["simpan"])) {
     </div>
   </header>
 
-  <?php include 'edit_profit_modal.php'?>
+  <?php include '../edit_profit_modal.php'?>
 
 
   <main class="main">
