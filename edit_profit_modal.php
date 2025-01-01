@@ -37,7 +37,7 @@
           <h5 class="modal-title" id="editProfilModalLabel">Edit Profil</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="/balbalanyuk/edit_profil.php" method="POST" enctype="multipart/form-data">
+        <form action="/edit_profil.php" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="fotoLama" class="form-control" id="exampleInputPassword1" value="<?= $profil["foto"]; ?>">
           <div class="modal-body">
             <div class="row justify-content-center align-items-center">

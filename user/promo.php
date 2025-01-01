@@ -15,17 +15,7 @@ if ($loggedIn) {
   $profil = query("SELECT * FROM user WHERE id_user = '$id_user'")[0];
 }
 
-if (isset($_POST["simpan"])) {
-  if (edit($_POST) > 0) {
-    echo "<script>
-          alert('Berhasil Diubah');
-          </script>";
-  } else {
-    echo "<script>
-          alert('Gagal Diubah');
-          </script>";
-  }
-}
+
 
 
 ?>
