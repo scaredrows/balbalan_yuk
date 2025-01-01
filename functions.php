@@ -87,28 +87,46 @@ function edit($data)
 {
   global $conn;
 
+
+  $gambar = null;
+  $no_handphone = null;
+
   $userid = $_SESSION["id_user"];
   $username = strtolower(stripslashes($data["email"]));
   $nama = $data["nama_lengkap"];
-  $no_handphone = $data["hp"];
-  $gender = $data["jenis_kelamin"];
-  $gambar = $data["foto"];
-  $gambarLama = $data["fotoLama"];
 
-  // Cek apakah User pilih gambar baru
-  if ($_FILES["foto"]["error"] === 4) {
-    $gambar = $gambarLama;
-  } else {
-    $gambar = upload();
+  if(isset($data["no_handphone"])) {
+    $no_handphone = $data["no_handphone"];
   }
 
-  $query = "UPDATE user SET email = '$username', 
-  nama_lengkap = '$nama',
-  no_handphone = '$no_handphone',
-  jenis_kelamin = '$gender',
-  foto = '$gambar'
-  WHERE id_user = '$userid'
-  ";
+  $gender = $data["jenis_kelamin"];
+
+  if(isset($data['foto']))
+  {
+    $gambar = upload();
+  }
+  else {
+    $gambar = $data["fotoLama"];
+  }
+
+  // $query = "UPDATE user SET email = '$username', 
+  // nama_lengkap = '$nama',
+  // no_handphone = '$no_handphone',
+  // jenis_kelamin = '$gender',
+  // foto = '$gambar'
+  // WHERE id_user = '$userid'
+  // ";
+
+  $query = "UPDATE user 
+          SET email = '$username', 
+              nama_lengkap = '$nama',
+              jenis_kelamin = '$gender',
+              foto = '$gambar'";
+
+  if ($no_handphone) {
+      $query .= ", no_handphone = '$no_handphone'";
+  }
+
 
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
