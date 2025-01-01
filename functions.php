@@ -102,7 +102,7 @@ function edit($data)
   $gender = $data["jenis_kelamin"];
 
 
-  if(isset($_FILES['foto'])) {
+  if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     $gambar = upload();
   }
  
